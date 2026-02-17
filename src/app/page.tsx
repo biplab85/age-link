@@ -1,6 +1,7 @@
 import Hero from "@/components/sections/Hero";
 import ValueProps from "@/components/sections/ValueProps";
 import WhoWeHelp from "@/components/sections/WhoWeHelp";
+import DentalHero from "@/components/sections/DentalHero";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 import DoctorProfile from "@/components/sections/DoctorProfile";
 import HowItWorks from "@/components/sections/HowItWorks";
@@ -11,7 +12,8 @@ import FinalCTA from "@/components/sections/FinalCTA";
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
+      <DentalHero />
       <ValueProps />
       <WhoWeHelp />
       <ServicesOverview />
