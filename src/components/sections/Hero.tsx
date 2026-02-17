@@ -276,7 +276,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-primary-lighter via-white to-white"
+      className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-primary-lighter via-white to-white dark:from-[#0d1c28] dark:via-surface dark:to-surface"
     >
       <SVGBackground variant="hero" />
 
@@ -297,7 +297,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-primary/[0.06] border border-primary/[0.08] text-primary text-sm font-medium mb-8"
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-primary/[0.06] dark:bg-primary/[0.12] border border-primary/[0.08] dark:border-primary/[0.2] text-primary text-sm font-medium mb-8"
             >
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/40" />
@@ -368,7 +368,7 @@ export default function Hero() {
               {heroContent.trustBadges.map((badge) => (
                 <span
                   key={badge.label}
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-neutral-200/60 text-xs font-medium text-neutral-600 shadow-[var(--shadow-xs)]"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-surface-elevated border border-neutral-200/60 dark:border-neutral-300/25 text-xs font-medium text-neutral-600 shadow-[var(--shadow-xs)]"
                 >
                   <svg className="w-3.5 h-3.5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.403 12.652a3 3 0 000-5.304 3 3 0 00-3.75-3.751 3 3 0 00-5.305 0 3 3 0 00-3.751 3.75 3 3 0 000 5.305 3 3 0 003.75 3.751 3 3 0 005.305 0 3 3 0 003.751-3.75zm-2.546-4.46a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" />
@@ -407,7 +407,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [-4, 4, -4] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-8 -left-5 bg-white rounded-xl shadow-[var(--shadow-elevated)] p-4 flex items-center gap-3 border border-neutral-100"
+              className="absolute bottom-8 -left-5 bg-white dark:bg-surface-elevated rounded-xl shadow-[var(--shadow-elevated)] p-4 flex items-center gap-3 border border-neutral-100 dark:border-neutral-200/50"
             >
               <div className="w-10 h-10 rounded-full bg-success/10 flex items-center justify-center">
                 <svg className="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
@@ -424,7 +424,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [3, -3, 3] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute top-6 -right-4 bg-white rounded-xl shadow-[var(--shadow-elevated)] p-3 flex items-center gap-2.5 border border-neutral-100"
+              className="absolute top-6 -right-4 bg-white dark:bg-surface-elevated rounded-xl shadow-[var(--shadow-elevated)] p-3 flex items-center gap-2.5 border border-neutral-100 dark:border-neutral-200/50"
             >
               <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center">
                 <svg className="w-4.5 h-4.5 text-primary" fill="currentColor" viewBox="0 0 20 20">

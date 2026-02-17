@@ -17,7 +17,7 @@ function SectionBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       {/* Soft gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-neutral-50/80 via-white to-neutral-50/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-neutral-50/80 via-white to-neutral-50/60 dark:from-[#0d1c28] dark:via-surface dark:to-surface" />
 
       {/* Morphing blobs */}
       <motion.div
@@ -209,13 +209,13 @@ export default function ValueProps() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: [0.4, 0, 0.2, 1] }}
-              className="group relative text-center rounded-2xl p-6 lg:p-8 bg-white border border-neutral-200/50 shadow-[var(--shadow-card)] transition-all duration-500 ease-[var(--ease-smooth)] hover:border-primary/35 hover:shadow-[0_0_0_1px_rgba(0,128,159,0.06),var(--shadow-card)]"
+              className="group relative text-center rounded-2xl p-6 lg:p-8 bg-white dark:bg-surface-elevated border border-neutral-200/50 dark:border-neutral-300/25 shadow-[var(--shadow-card)] transition-all duration-500 ease-[var(--ease-smooth)] hover:border-primary/35 hover:shadow-[0_0_0_1px_rgba(0,128,159,0.06),var(--shadow-card)]"
             >
               {/* Top border accent — thin line, full width */}
               <div className="absolute top-0 inset-x-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/50 transition-all duration-600" />
 
               {/* Icon — lifts + icon bg fills with soft primary */}
-              <div className="icon-draw w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] flex items-center justify-center text-primary transition-all duration-500 ease-[var(--ease-smooth)] group-hover:from-primary group-hover:to-primary-dark group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(0,128,159,0.25)] group-hover:-translate-y-1">
+              <div className="icon-draw w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] dark:from-primary/[0.15] dark:to-primary/[0.06] flex items-center justify-center text-primary transition-all duration-500 ease-[var(--ease-smooth)] group-hover:from-primary group-hover:to-primary-dark group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(0,128,159,0.25)] group-hover:-translate-y-1">
                 {icons[i]}
               </div>
 

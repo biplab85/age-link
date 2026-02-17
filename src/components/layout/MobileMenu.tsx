@@ -49,20 +49,20 @@ export default function MobileMenu({ open, onClose, onNavigate }: MobileMenuProp
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 z-50 h-full w-[85%] max-w-[380px] bg-white shadow-2xl flex flex-col"
+            className="fixed top-0 right-0 z-50 h-full w-[85%] max-w-[380px] bg-white dark:bg-surface shadow-2xl flex flex-col"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 h-[72px] border-b border-neutral-100">
+            <div className="flex items-center justify-between px-6 h-[72px] border-b border-neutral-100 dark:border-neutral-200/40">
               <Image
                 src={siteConfig.logo}
                 alt={siteConfig.name}
                 width={180}
                 height={50}
-                className="h-12 w-auto"
+                className="h-12 w-auto dark:brightness-0 dark:invert"
               />
               <button
                 onClick={onClose}
-                className="p-2 rounded-lg hover:bg-neutral-100 transition-colors"
+                className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-200/30 transition-colors"
                 aria-label="Close menu"
               >
                 <svg className="w-6 h-6 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -77,7 +77,7 @@ export default function MobileMenu({ open, onClose, onNavigate }: MobileMenuProp
                 <button
                   key={item.label}
                   onClick={() => handleClick(item.href)}
-                  className="block w-full text-left py-4 text-[15px] font-medium text-neutral-700 hover:text-primary transition-colors border-b border-neutral-100 last:border-0"
+                  className="block w-full text-left py-4 text-[15px] font-medium text-neutral-700 hover:text-primary transition-colors border-b border-neutral-100 dark:border-neutral-200/30 last:border-0"
                 >
                   {item.label}
                 </button>
@@ -85,7 +85,7 @@ export default function MobileMenu({ open, onClose, onNavigate }: MobileMenuProp
             </nav>
 
             {/* Bottom CTA */}
-            <div className="p-6 border-t border-neutral-100">
+            <div className="p-6 border-t border-neutral-100 dark:border-neutral-200/40">
               <Button onClick={() => handleClick(headerCTA.href)} className="w-full">
                 {headerCTA.label}
               </Button>

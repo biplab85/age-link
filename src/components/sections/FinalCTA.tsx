@@ -8,7 +8,7 @@ import { finalCTA } from "@/data/content";
 function SectionBg() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-lighter via-white to-neutral-50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-lighter via-white to-neutral-50 dark:from-[#0d1c28] dark:via-surface dark:to-surface" />
       {/* Radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/[0.03] rounded-full blur-[120px]" />
 

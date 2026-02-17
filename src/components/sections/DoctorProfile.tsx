@@ -10,7 +10,7 @@ import { doctorSectionHeading, doctorHomepageSummary } from "@/data/content";
 function SectionBg() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 via-white to-primary-lighter/40" />
+      <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 via-white to-primary-lighter/40 dark:from-[#0d1c28] dark:via-surface dark:to-surface" />
 
       {/* Blobs */}
       <motion.div
@@ -84,7 +84,7 @@ export default function DoctorProfile() {
               {/* Soft glow behind */}
               <div className="absolute -inset-6 rounded-3xl bg-primary/[0.06] blur-2xl" aria-hidden="true" />
 
-              <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary-light to-primary/[0.12] shadow-[var(--shadow-elevated)] border border-primary/[0.08]">
+              <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary-light to-primary/[0.12] shadow-[var(--shadow-elevated)] border border-primary/[0.08] dark:border-primary/[0.15]">
                 <Image
                   src="/assets/images/Sitoh-YY.avif"
                   alt={doc.name}
@@ -100,7 +100,7 @@ export default function DoctorProfile() {
               <motion.div
                 animate={{ y: [-3, 3, -3] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -right-3 top-12 bg-white rounded-xl shadow-[var(--shadow-elevated)] p-4 max-w-[180px] border border-neutral-200/50"
+                className="absolute -right-3 top-12 bg-white dark:bg-surface-elevated rounded-xl shadow-[var(--shadow-elevated)] p-4 max-w-[180px] border border-neutral-200/50 dark:border-neutral-300/25"
               >
                 <p className="text-xs font-bold text-primary mb-0.5">FAMS, FRCP (Edin)</p>
                 <p className="text-[11px] text-neutral-500 leading-snug">Fellow, Academy of Medicine Singapore</p>

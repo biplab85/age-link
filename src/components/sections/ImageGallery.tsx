@@ -12,7 +12,7 @@ function SectionBg() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       {/* Rich gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#e8f6fa] via-[#f0f1f8] to-[#fdf6ec]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#e8f6fa] via-[#f0f1f8] to-[#fdf6ec] dark:from-[#0c1a26] dark:via-[#0e1924] dark:to-[#101820]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,128,159,0.06)_0%,transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(232,168,56,0.05)_0%,transparent_50%)]" />
 
@@ -110,7 +110,7 @@ export default function ImageGallery() {
                 href={img.src}
                 data-fancybox="gallery"
                 data-caption={img.caption}
-                className="group relative block rounded-2xl overflow-hidden aspect-[4/3] bg-neutral-100 cursor-pointer shadow-[var(--shadow-xs)] transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.12),0_2px_8px_rgba(0,0,0,0.04)] hover:-translate-y-1"
+                className="group relative block rounded-2xl overflow-hidden aspect-[4/3] bg-neutral-100 dark:bg-neutral-200/30 cursor-pointer shadow-[var(--shadow-xs)] transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.12),0_2px_8px_rgba(0,0,0,0.04)] hover:-translate-y-1"
               >
                 <Image
                   src={img.src}
@@ -139,7 +139,7 @@ export default function ImageGallery() {
 
           {/* 6th card — CTA with animated medical SVG */}
           <ScrollReveal delay={galleryImages.length * 0.06}>
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-primary/[0.06] via-primary-lighter/60 to-white border border-primary/[0.1] shadow-[var(--shadow-xs)] flex flex-col items-center justify-center p-6 text-center">
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-primary/[0.06] via-primary-lighter/60 to-white dark:from-primary/[0.1] dark:via-surface-elevated dark:to-surface border border-primary/[0.1] dark:border-primary/[0.18] shadow-[var(--shadow-xs)] flex flex-col items-center justify-center p-6 text-center">
               {/* Animated medical equipment SVG */}
               <svg viewBox="0 0 120 90" fill="none" className="w-24 h-auto mb-4">
                 {/* Stethoscope */}

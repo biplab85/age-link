@@ -10,7 +10,7 @@ function SectionBg() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       {/* Warm tinted gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#fdf8f0] via-[#f8f4ee] to-[#fef9f3]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#fdf8f0] via-[#f8f4ee] to-[#fef9f3] dark:from-[#0f1920] dark:via-[#0e1924] dark:to-[#101820]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(232,168,56,0.06)_0%,transparent_55%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,128,159,0.04)_0%,transparent_50%)]" />
 
@@ -93,7 +93,7 @@ export default function HowItWorks() {
                   {/* Step circle */}
                   <div className="relative mx-auto w-24 h-24 mb-6">
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/[0.06] to-primary/[0.02] transition-all duration-500 group-hover:from-primary/[0.12] group-hover:to-primary/[0.06] group-hover:scale-110" />
-                    <div className="absolute inset-2.5 rounded-full bg-white shadow-[var(--shadow-card)] flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_4px_20px_rgba(0,128,159,0.2)]">
+                    <div className="absolute inset-2.5 rounded-full bg-white dark:bg-surface-elevated shadow-[var(--shadow-card)] border border-transparent dark:border-neutral-300/20 flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_4px_20px_rgba(0,128,159,0.2)]">
                       <span className="text-xl font-bold text-primary transition-all duration-300 group-hover:scale-110">
                         {String(step.step).padStart(2, "0")}
                       </span>

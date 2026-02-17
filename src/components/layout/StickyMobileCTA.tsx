@@ -14,7 +14,7 @@ export default function StickyMobileCTA() {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-neutral-200 px-4 py-3 flex gap-3 transition-transform duration-300"
+      className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 dark:bg-surface/95 backdrop-blur-md border-t border-neutral-200 dark:border-neutral-300/30 px-4 py-3 flex gap-3 transition-transform duration-300"
       style={{ transform: visible ? "translateY(0)" : "translateY(100%)" }}
     >
       <a

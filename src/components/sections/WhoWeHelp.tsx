@@ -21,7 +21,7 @@ const accents = [
 function SectionBg() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-lighter/60 via-white to-neutral-50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-lighter/60 via-white to-neutral-50 dark:from-[#0d1c28] dark:via-surface dark:to-surface" />
 
       <motion.div
         className="absolute -top-28 -right-28 w-[450px] h-[450px] rounded-full bg-primary/[0.04]"
@@ -98,7 +98,7 @@ export default function WhoWeHelp() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, delay: i * 0.12, ease: [0.4, 0, 0.2, 1] }}
-                className={`group relative flex items-stretch rounded-2xl bg-white border border-neutral-200/50 shadow-[var(--shadow-card)] overflow-hidden transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.10),0_2px_8px_rgba(0,0,0,0.03)] hover:-translate-y-1 ${isEven ? "lg:mr-12" : "lg:ml-12"}`}
+                className={`group relative flex items-stretch rounded-2xl bg-white dark:bg-surface-elevated border border-neutral-200/50 dark:border-neutral-300/25 shadow-[var(--shadow-card)] overflow-hidden transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.10),0_2px_8px_rgba(0,0,0,0.03)] hover:-translate-y-1 ${isEven ? "lg:mr-12" : "lg:ml-12"}`}
               >
                 {/* Left accent stripe */}
                 <div className={`w-1.5 flex-shrink-0 bg-gradient-to-b ${accent.gradient} transition-all duration-500 group-hover:w-2`} />
@@ -112,7 +112,7 @@ export default function WhoWeHelp() {
                       style={{ background: `radial-gradient(circle, ${accent.ring}, transparent 70%)` }}
                     />
                     {/* Icon container */}
-                    <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${accent.bg} border border-neutral-200/30 flex items-center justify-center text-primary transition-all duration-500 group-hover:shadow-[0_4px_20px_${accent.ring}] group-hover:scale-105`}>
+                    <div className={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${accent.bg} border border-neutral-200/30 dark:border-neutral-300/20 flex items-center justify-center text-primary transition-all duration-500 group-hover:shadow-[0_4px_20px_${accent.ring}] group-hover:scale-105`}>
                       <div className="icon-draw">
                         {icons[i]}
                       </div>
@@ -132,7 +132,7 @@ export default function WhoWeHelp() {
 
                 {/* Hover arrow indicator */}
                 <div className="hidden sm:flex items-center pr-6 flex-shrink-0">
-                  <div className="w-8 h-8 rounded-full bg-neutral-50 flex items-center justify-center transition-all duration-500 group-hover:bg-primary/[0.08] group-hover:scale-110">
+                  <div className="w-8 h-8 rounded-full bg-neutral-50 dark:bg-neutral-200/20 flex items-center justify-center transition-all duration-500 group-hover:bg-primary/[0.08] dark:group-hover:bg-primary/[0.15] group-hover:scale-110">
                     <svg className="w-4 h-4 text-neutral-300 transition-colors duration-400 group-hover:text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>

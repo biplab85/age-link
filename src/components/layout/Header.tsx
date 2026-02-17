@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import MobileMenu from "./MobileMenu";
 import { navigation, headerCTA, siteConfig } from "@/data/content";
 import { cn } from "@/lib/utils";
@@ -47,8 +48,8 @@ export default function Header() {
         className={cn(
           "sticky top-0 z-40 w-full transition-all duration-400",
           scrolled
-            ? "bg-white/90 backdrop-blur-xl shadow-[var(--shadow-header)] border-b border-neutral-200/30"
-            : "bg-white/70 backdrop-blur-sm"
+            ? "bg-white/90 dark:bg-surface/90 backdrop-blur-xl shadow-[var(--shadow-header)] border-b border-neutral-200/30 dark:border-neutral-300/20"
+            : "bg-white/70 dark:bg-surface/70 backdrop-blur-sm"
         )}
       >
         <Container className="flex items-center justify-between h-[68px]">
@@ -63,7 +64,7 @@ export default function Header() {
               alt={siteConfig.name}
               width={160}
               height={44}
-              className="max-h-11 w-auto"
+              className="max-h-11 w-auto dark:brightness-0 dark:invert"
               style={{ height: "44px", width: "auto" }}
               priority
             />
@@ -92,6 +93,7 @@ export default function Header() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             <Button
               onClick={() => scrollTo(headerCTA.href)}
               size="sm"
@@ -105,7 +107,7 @@ export default function Header() {
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-2 rounded-xl hover:bg-neutral-100/80 transition-colors duration-300"
+              className="lg:hidden p-2 rounded-xl hover:bg-neutral-100/80 dark:hover:bg-neutral-200/30 transition-colors duration-300"
               aria-label="Open menu"
               aria-expanded={mobileOpen}
             >

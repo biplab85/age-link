@@ -27,8 +27,8 @@ export default function Card({
       className={cn(
         "rounded-2xl p-6 lg:p-8",
         glass
-          ? "bg-white/60 backdrop-blur-lg border border-white/50 shadow-[var(--shadow-xs)]"
-          : "bg-white border border-neutral-200/50 shadow-[var(--shadow-card)]",
+          ? "bg-white/60 dark:bg-surface-elevated/60 backdrop-blur-lg border border-white/50 dark:border-neutral-300/20 shadow-[var(--shadow-xs)]"
+          : "bg-white dark:bg-surface-elevated border border-neutral-200/50 dark:border-neutral-300/30 shadow-[var(--shadow-card)]",
         hover &&
           "transition-all duration-400 ease-[var(--ease-smooth)] hover:shadow-[var(--shadow-card-hover)] hover:border-primary/12",
         className

@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import StickyMobileCTA from "@/components/layout/StickyMobileCTA";
 import SkipLinks from "@/components/shared/SkipLinks";
 import CursorFollower from "@/components/shared/CursorFollower";
+import { ThemeProvider } from "@/context/ThemeContext";
 import { siteConfig, pageMeta } from "@/data/content";
 
 const playfair = Playfair_Display({
@@ -41,14 +42,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-body antialiased" suppressHydrationWarning>
-        <SkipLinks />
-        <CursorFollower />
-        <Header />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <StickyMobileCTA />
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");var d=t==="dark"||(t!=="light"&&window.matchMedia("(prefers-color-scheme:dark)").matches);if(d)document.documentElement.classList.add("dark")}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body className="font-body antialiased">
+        <ThemeProvider>
+          <SkipLinks />
+          <CursorFollower />
+          <Header />
+          <main id="main-content">{children}</main>
+          <Footer />
+          <StickyMobileCTA />
+        </ThemeProvider>
       </body>
     </html>
   );

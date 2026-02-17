@@ -28,11 +28,11 @@ const variants: Record<Variant, string> = {
   primary:
     "bg-gradient-to-b from-primary to-primary-dark text-white shadow-[0_1px_2px_rgba(0,0,0,0.08),0_2px_8px_rgba(0,128,159,0.2)] hover:shadow-[0_2px_4px_rgba(0,0,0,0.08),0_4px_16px_rgba(0,128,159,0.28)]",
   secondary:
-    "border border-neutral-200/80 text-secondary bg-white hover:border-primary/30 hover:text-primary shadow-[var(--shadow-xs)] hover:shadow-[var(--shadow-glow)]",
+    "border border-neutral-200/80 dark:border-neutral-300/40 text-secondary bg-white dark:bg-surface-elevated hover:border-primary/30 hover:text-primary shadow-[var(--shadow-xs)] hover:shadow-[var(--shadow-glow)]",
   ghost:
-    "text-primary hover:bg-primary-light/50",
+    "text-primary hover:bg-primary-light/50 dark:hover:bg-primary/[0.12]",
   icon:
-    "p-2 rounded-full hover:bg-neutral-100 text-neutral-500 hover:text-primary",
+    "p-2 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-200/20 text-neutral-500 hover:text-primary",
 };
 
 const sizes: Record<Size, string> = {
@@ -55,7 +55,7 @@ export default function Button({
     "relative inline-flex items-center justify-center gap-2 font-semibold rounded-xl",
     "transition-all duration-300 ease-[var(--ease-smooth)]",
     "active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed",
-    "focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2",
+    "focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#0a1018]",
     variant !== "icon" && sizes[size],
     variants[variant],
     className

@@ -26,7 +26,7 @@ const serviceIcons = [
 function SectionBg() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      <div className="absolute inset-0 bg-gradient-to-b from-primary-lighter/60 via-primary-light/30 to-white" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary-lighter/60 via-primary-light/30 to-white dark:from-[#0d1c28] dark:via-surface-alt dark:to-surface" />
 
       <motion.div
         className="absolute top-10 -right-32 w-[450px] h-[450px] rounded-full bg-primary/[0.03]"
@@ -307,13 +307,13 @@ export default function ServicesOverview() {
 
         <ScrollReveal>
           <div
-            className="rounded-2xl bg-white border border-neutral-200/50 shadow-[var(--shadow-card)] overflow-hidden"
+            className="rounded-2xl bg-white dark:bg-surface-elevated border border-neutral-200/50 dark:border-neutral-300/35 shadow-[var(--shadow-card)] dark:shadow-[var(--shadow-glow)] overflow-hidden"
             onMouseEnter={() => { hoveringRef.current = true; }}
             onMouseLeave={() => { hoveringRef.current = false; }}
           >
             <div className="flex flex-col lg:flex-row">
               {/* ── Left: Vertical tab buttons (desktop) / Horizontal (mobile) ── */}
-              <div className="lg:w-[280px] xl:w-[300px] flex-shrink-0 border-b lg:border-b-0 lg:border-r border-neutral-200/60 lg:flex lg:flex-col lg:bg-gradient-to-b lg:from-transparent lg:to-primary/[0.02]">
+              <div className="lg:w-[280px] xl:w-[300px] flex-shrink-0 border-b lg:border-b-0 lg:border-r border-neutral-200/60 dark:border-neutral-300/20 lg:flex lg:flex-col lg:bg-gradient-to-b lg:from-transparent lg:to-primary/[0.02]">
                 <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible scrollbar-hide">
                   {homepageServices.map((service, i) => {
                     const isActive = activeTab === i;
@@ -326,7 +326,7 @@ export default function ServicesOverview() {
                           transition-all duration-400 ease-[var(--ease-smooth)] min-w-0
                           ${isActive
                             ? "text-primary bg-primary/[0.05]"
-                            : "text-neutral-400 hover:text-neutral-600 hover:bg-neutral-50/60"
+                            : "text-neutral-400 hover:text-neutral-600 hover:bg-neutral-50/60 dark:hover:bg-neutral-200/10 dark:hover:text-neutral-500"
                           }
                         `}
                         aria-selected={isActive}
@@ -334,7 +334,7 @@ export default function ServicesOverview() {
                       >
                         <span className={`
                           icon-draw flex-shrink-0 transition-colors duration-400
-                          ${isActive ? "text-primary" : "text-neutral-300"}
+                          ${isActive ? "text-primary" : "text-neutral-300 dark:text-neutral-400"}
                         `}>
                           {serviceIcons[i]}
                         </span>
@@ -364,7 +364,7 @@ export default function ServicesOverview() {
               </div>
 
               {/* ── Right: Content area ── */}
-              <div className="flex-1 p-6 lg:p-10 min-h-[320px] relative bg-gradient-to-br from-white via-white to-primary/[0.02]">
+              <div className="flex-1 p-6 lg:p-10 min-h-[320px] relative bg-gradient-to-br from-white via-white to-primary/[0.02] dark:from-[#1c3348] dark:via-[#1a3044] dark:to-primary/[0.04]">
                 {/* Subtle corner glow */}
                 <div className="absolute top-0 right-0 w-40 h-40 bg-primary/[0.03] rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
 

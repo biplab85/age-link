@@ -16,7 +16,7 @@ function FooterBg() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
       {/* Base gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0d1b24] via-secondary to-[#0f2633]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0d1b24] via-[#152d3e] to-[#0f2633]" />
 
       {/* Subtle radial glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/[0.03] rounded-full blur-[100px]" />

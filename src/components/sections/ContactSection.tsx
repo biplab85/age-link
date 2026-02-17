@@ -19,7 +19,7 @@ import {
 function SectionBg() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-primary-lighter/30 to-neutral-50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-primary-lighter/30 to-neutral-50 dark:from-surface dark:via-surface-alt dark:to-surface" />
 
       <motion.div
         className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-primary/[0.03]"
@@ -95,7 +95,7 @@ export default function ContactSection() {
   };
 
   const inputClasses =
-    "w-full px-4 py-3 rounded-xl border border-neutral-200/70 text-[15px] text-neutral-700 placeholder:text-neutral-300 focus:outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/8 transition-all duration-300 bg-white";
+    "w-full px-4 py-3 rounded-xl border border-neutral-200/70 dark:border-neutral-300/30 text-[15px] text-neutral-700 dark:text-neutral-600 placeholder:text-neutral-300 dark:placeholder:text-neutral-400 focus:outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/8 transition-all duration-300 bg-white dark:bg-surface";
 
   return (
     <section id="contact" className="relative py-20 lg:py-28 overflow-hidden">
@@ -106,7 +106,7 @@ export default function ContactSection() {
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-14 max-w-6xl mx-auto">
           {/* Form */}
           <ScrollReveal className="lg:col-span-3">
-            <div className="bg-white rounded-2xl shadow-[var(--shadow-card)] border border-neutral-200/40 p-6 sm:p-8 lg:p-10 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(0,128,159,0.08),0_2px_8px_rgba(0,0,0,0.03)]">
+            <div className="bg-white dark:bg-surface-elevated rounded-2xl shadow-[var(--shadow-card)] border border-neutral-200/40 dark:border-neutral-300/25 p-6 sm:p-8 lg:p-10 transition-all duration-500 hover:shadow-[0_8px_32px_rgba(0,128,159,0.08),0_2px_8px_rgba(0,0,0,0.03)]">
               <h3 className="font-heading text-xl font-semibold text-secondary mb-1">
                 {contactFormHeading}
               </h3>
@@ -163,7 +163,7 @@ export default function ContactSection() {
                                 name={field.name}
                                 value={opt}
                                 onChange={(e) => handleChange(field.name, e.target.value)}
-                                className="w-4 h-4 accent-[#00809f]"
+                                className="w-4 h-4 accent-[#00809f] dark:accent-[#1a9fbf]"
                               />
                               {opt}
                             </label>
@@ -198,7 +198,7 @@ export default function ContactSection() {
           <ScrollReveal direction="left" className="lg:col-span-2">
             <div className="space-y-4">
               {/* Address */}
-              <div className="group bg-white rounded-2xl p-6 border border-neutral-200/40 shadow-[var(--shadow-card)] transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.1),0_2px_8px_rgba(0,0,0,0.03)] hover:border-primary/15 hover:-translate-y-0.5">
+              <div className="group bg-white dark:bg-surface-elevated rounded-2xl p-6 border border-neutral-200/40 dark:border-neutral-300/25 shadow-[var(--shadow-card)] transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.1),0_2px_8px_rgba(0,0,0,0.03)] hover:border-primary/15 hover:-translate-y-0.5">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] flex items-center justify-center text-primary transition-all duration-500 group-hover:from-primary group-hover:to-primary-dark group-hover:bg-gradient-to-br group-hover:text-white group-hover:shadow-[0_4px_12px_rgba(0,128,159,0.25)]">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -216,7 +216,7 @@ export default function ContactSection() {
               </div>
 
               {/* Phone */}
-              <div className="group bg-white rounded-2xl p-6 border border-neutral-200/40 shadow-[var(--shadow-card)] transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.1),0_2px_8px_rgba(0,0,0,0.03)] hover:border-primary/15 hover:-translate-y-0.5">
+              <div className="group bg-white dark:bg-surface-elevated rounded-2xl p-6 border border-neutral-200/40 dark:border-neutral-300/25 shadow-[var(--shadow-card)] transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.1),0_2px_8px_rgba(0,0,0,0.03)] hover:border-primary/15 hover:-translate-y-0.5">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] flex items-center justify-center text-primary transition-all duration-500 group-hover:from-primary group-hover:to-primary-dark group-hover:bg-gradient-to-br group-hover:text-white group-hover:shadow-[0_4px_12px_rgba(0,128,159,0.25)]">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -245,7 +245,7 @@ export default function ContactSection() {
               </div>
 
               {/* Email */}
-              <div className="group bg-white rounded-2xl p-6 border border-neutral-200/40 shadow-[var(--shadow-card)] transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.1),0_2px_8px_rgba(0,0,0,0.03)] hover:border-primary/15 hover:-translate-y-0.5">
+              <div className="group bg-white dark:bg-surface-elevated rounded-2xl p-6 border border-neutral-200/40 dark:border-neutral-300/25 shadow-[var(--shadow-card)] transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.1),0_2px_8px_rgba(0,0,0,0.03)] hover:border-primary/15 hover:-translate-y-0.5">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] flex items-center justify-center text-primary transition-all duration-500 group-hover:from-primary group-hover:to-primary-dark group-hover:bg-gradient-to-br group-hover:text-white group-hover:shadow-[0_4px_12px_rgba(0,128,159,0.25)]">
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -265,7 +265,7 @@ export default function ContactSection() {
               </div>
 
               {/* Animated SVG Map */}
-              <div className="rounded-2xl overflow-hidden border border-neutral-200/40 aspect-[4/3] bg-gradient-to-br from-primary-lighter/40 via-white to-neutral-50 shadow-[var(--shadow-xs)] relative">
+              <div className="rounded-2xl overflow-hidden border border-neutral-200/40 dark:border-neutral-300/25 aspect-[4/3] bg-gradient-to-br from-primary-lighter/40 via-white to-neutral-50 dark:via-surface dark:to-surface shadow-[var(--shadow-xs)] relative">
                 <svg className="w-full h-full" viewBox="0 0 400 300" fill="none" preserveAspectRatio="xMidYMid slice">
                   {/* Grid streets */}
                   <motion.g
@@ -417,7 +417,7 @@ export default function ContactSection() {
 
                 {/* Clinic name overlay */}
                 <motion.div
-                  className="absolute bottom-3 left-3 right-3 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-primary/10 shadow-[0_2px_12px_rgba(0,128,159,0.08)]"
+                  className="absolute bottom-3 left-3 right-3 bg-white/90 dark:bg-surface-elevated/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-primary/10 shadow-[0_2px_12px_rgba(0,128,159,0.08)]"
                   initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
