@@ -19,7 +19,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative w-9 h-9 rounded-xl flex items-center justify-center hover:bg-neutral-100/80 dark:hover:bg-neutral-200/10 transition-colors duration-300"
+      className="relative w-9 h-9 rounded-xl flex items-center justify-center hover:bg-neutral-100/80 dark:hover:bg-neutral-200/10 transition-colors duration-300 cursor-pointer"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {/* Sun */}

@@ -56,7 +56,7 @@ export default function Header() {
           {/* Logo */}
           <button
             onClick={() => scrollTo("#hero")}
-            className="flex items-center gap-2.5 shrink-0"
+            className="flex items-center gap-2.5 shrink-0 cursor-pointer"
             aria-label={siteConfig.name}
           >
             <Image
@@ -77,7 +77,7 @@ export default function Header() {
                 key={item.label}
                 onClick={() => scrollTo(item.href)}
                 className={cn(
-                  "relative px-3.5 py-2 text-[14px] font-medium rounded-lg transition-all duration-300",
+                  "relative px-3.5 py-2 text-[14px] font-medium rounded-lg transition-all duration-300 cursor-pointer",
                   activeSection === item.href
                     ? "text-primary"
                     : "text-neutral-500 hover:text-secondary"
@@ -94,20 +94,21 @@ export default function Header() {
           {/* Right side */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            <Button
-              onClick={() => scrollTo(headerCTA.href)}
-              size="sm"
-              className="hidden sm:inline-flex"
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-              </svg>
-              {headerCTA.label}
-            </Button>
+            <div className="hidden lg:block">
+              <Button
+                onClick={() => scrollTo(headerCTA.href)}
+                size="sm"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                </svg>
+                {headerCTA.label}
+              </Button>
+            </div>
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-2 rounded-xl hover:bg-neutral-100/80 dark:hover:bg-neutral-200/30 transition-colors duration-300"
+              className="lg:hidden p-2 rounded-xl hover:bg-neutral-100/80 dark:hover:bg-neutral-200/30 transition-colors duration-300 cursor-pointer"
               aria-label="Open menu"
               aria-expanded={mobileOpen}
             >

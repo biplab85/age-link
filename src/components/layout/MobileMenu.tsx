@@ -62,7 +62,7 @@ export default function MobileMenu({ open, onClose, onNavigate }: MobileMenuProp
               />
               <button
                 onClick={onClose}
-                className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-200/30 transition-colors"
+                className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-200/30 transition-colors cursor-pointer"
                 aria-label="Close menu"
               >
                 <svg className="w-6 h-6 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -77,7 +77,7 @@ export default function MobileMenu({ open, onClose, onNavigate }: MobileMenuProp
                 <button
                   key={item.label}
                   onClick={() => handleClick(item.href)}
-                  className="block w-full text-left py-4 text-[15px] font-medium text-neutral-700 hover:text-primary transition-colors border-b border-neutral-100 dark:border-neutral-200/30 last:border-0"
+                  className="block w-full text-left py-4 text-[15px] font-medium text-neutral-700 hover:text-primary transition-colors border-b border-neutral-100 dark:border-neutral-200/30 last:border-0 cursor-pointer"
                 >
                   {item.label}
                 </button>

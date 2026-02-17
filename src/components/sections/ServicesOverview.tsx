@@ -322,7 +322,7 @@ export default function ServicesOverview() {
                         key={service.slug}
                         onClick={() => handleTabClick(i)}
                         className={`
-                          relative flex items-center gap-3 px-5 py-4 lg:py-4.5 text-sm font-medium whitespace-nowrap lg:whitespace-normal text-left
+                          relative flex items-center gap-3 px-5 py-4 lg:py-4.5 text-sm font-medium whitespace-nowrap lg:whitespace-normal text-left cursor-pointer
                           transition-all duration-400 ease-[var(--ease-smooth)] min-w-0
                           ${isActive
                             ? "text-primary bg-primary/[0.05]"

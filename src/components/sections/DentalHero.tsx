@@ -318,7 +318,7 @@ export default function DentalHero() {
             custom={4}
             className="flex flex-wrap justify-center gap-4"
           >
-            <span className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full border border-white/20 text-white text-sm font-semibold hover:border-white/40 transition-colors cursor-default">
+            <span className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full border border-white/20 text-white text-sm font-semibold hover:border-white/40 transition-colors cursor-pointer">
               {/* Calendar icon */}
               <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none">
                 <motion.rect
@@ -362,7 +362,7 @@ export default function DentalHero() {
               </svg>
               {dentalHeroContent.primaryCTA.label}
             </span>
-            <span className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full border border-primary/40 text-primary dark:text-primary text-sm font-semibold hover:border-primary/60 transition-colors cursor-default">
+            <span className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full border border-primary/40 text-primary dark:text-primary text-sm font-semibold hover:border-primary/60 transition-colors cursor-pointer">
               {/* Appointment / clipboard-check icon */}
               <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none">
                 <motion.rect

@@ -52,7 +52,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "relative inline-flex items-center justify-center gap-2 font-semibold rounded-xl",
+    "relative inline-flex items-center justify-center gap-2 font-semibold rounded-xl cursor-pointer",
     "transition-all duration-300 ease-[var(--ease-smooth)]",
     "active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed",
     "focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#0a1018]",
