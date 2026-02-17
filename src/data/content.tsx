@@ -232,6 +232,23 @@ export const heroContent: HeroContent = {
 };
 
 // -----------------------------------------------------------------------------
+// Secondary Hero (DentalHero) Section
+// -----------------------------------------------------------------------------
+
+export const dentalHeroContent = {
+  titleLine1: "Simplify Your Smiles With",
+  titleLine2: "Precision & Care",
+  subtitle:
+    "Experience modern dentistry designed for every smile, from routine checkups to advanced treatments.",
+  primaryCTA: { label: "See Schedule", href: "#contact" },
+  secondaryCTA: { label: "Book Appointment", href: "#contact" },
+  stats: [
+    { value: "15+", label: "Years of\nService Experience" },
+    { value: "5k+", label: "Smiling" },
+  ],
+} as const;
+
+// -----------------------------------------------------------------------------
 // Value Propositions — "Why Choose Age-Link"
 // -----------------------------------------------------------------------------
 

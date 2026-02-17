@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
+import { dentalHeroContent } from "@/data/content";
 
 /* ─── Floating clinic equipment decorations ─── */
 function ClinicDecoration() {
@@ -285,7 +286,7 @@ export default function DentalHero() {
             custom={1}
             className="font-heading text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.1] mb-2"
           >
-            Simplify Your Smiles With
+            {dentalHeroContent.titleLine1}
           </motion.h2>
           <motion.p
             variants={fadeUp}
@@ -295,7 +296,7 @@ export default function DentalHero() {
             custom={2}
             className="font-heading text-4xl sm:text-5xl lg:text-[3.5rem] font-bold italic text-[#5ce1e6] leading-[1.1] mb-6"
           >
-            Precision &amp; Care
+            {dentalHeroContent.titleLine2}
           </motion.p>
           <motion.p
             variants={fadeUp}
@@ -305,8 +306,7 @@ export default function DentalHero() {
             custom={3}
             className="text-white/50 text-base sm:text-lg leading-relaxed max-w-lg mx-auto mb-8"
           >
-            Experience modern dentistry designed for every smile, from routine
-            checkups to advanced treatments.
+            {dentalHeroContent.subtitle}
           </motion.p>
 
           {/* CTA buttons */}
@@ -360,7 +360,7 @@ export default function DentalHero() {
                 <motion.circle cx="8" cy="18" r="1" fill="currentColor" initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.2, delay: 1.8 }} />
                 <motion.circle cx="12" cy="18" r="1" fill="currentColor" initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.2, delay: 1.9 }} />
               </svg>
-              See Schedule
+              {dentalHeroContent.primaryCTA.label}
             </span>
             <span className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full border border-primary/40 text-primary dark:text-primary text-sm font-semibold hover:border-primary/60 transition-colors cursor-default">
               {/* Appointment / clipboard-check icon */}
@@ -390,7 +390,7 @@ export default function DentalHero() {
                   transition={{ duration: 0.5, delay: 1.4, ease: "easeOut" }}
                 />
               </svg>
-              Book Appointment
+              {dentalHeroContent.secondaryCTA.label}
             </span>
           </motion.div>
         </div>
@@ -405,24 +405,83 @@ export default function DentalHero() {
           className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto"
         >
           {/* Top-left: Stat card "15+" */}
-          <div className="rounded-2xl bg-gradient-to-br from-primary to-primary-dark p-6 sm:p-8 flex flex-col justify-end aspect-square lg:aspect-auto">
-            <span className="text-white text-5xl sm:text-6xl font-bold leading-none mb-2">
-              15+
+          <div className="fistContainer group/stat relative rounded-2xl bg-gradient-to-br from-primary to-primary-dark p-6 sm:p-8 flex flex-col justify-end aspect-square lg:aspect-auto overflow-hidden transition-all duration-500 hover:shadow-[0_8px_32px_rgba(0,128,159,0.3)] hover:scale-[1.03]">
+            {/* Stethoscope SVG — continuous draw */}
+            <motion.svg
+              className="absolute top-2 right-2 w-24 h-24 sm:w-28 sm:h-28 transition-transform duration-500 group-hover/stat:scale-110 group-hover/stat:-rotate-6"
+              viewBox="0 0 80 80"
+              fill="none"
+            >
+              {/* Earpieces */}
+              <motion.path
+                d="M26 10L26 18"
+                stroke="white" strokeWidth="2.5" strokeLinecap="round" opacity="0.3"
+                animate={{ pathLength: [0, 1, 1, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.path
+                d="M38 10L38 18"
+                stroke="white" strokeWidth="2.5" strokeLinecap="round" opacity="0.3"
+                animate={{ pathLength: [0, 1, 1, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+              />
+              <motion.circle
+                cx="26" cy="8" r="3"
+                stroke="white" strokeWidth="2" fill="none" opacity="0.35"
+                animate={{ pathLength: [0, 1, 1, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+              />
+              <motion.circle
+                cx="38" cy="8" r="3"
+                stroke="white" strokeWidth="2" fill="none" opacity="0.35"
+                animate={{ pathLength: [0, 1, 1, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              />
+              {/* Y-connector */}
+              <motion.path
+                d="M26 18Q26 26 32 28Q38 26 38 18"
+                stroke="white" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.3"
+                animate={{ pathLength: [0, 1, 1, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+              />
+              {/* Tube */}
+              <motion.path
+                d="M32 28Q32 42 24 50Q16 58 22 68"
+                stroke="white" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.3"
+                animate={{ pathLength: [0, 1, 1, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              />
+              {/* Chest piece */}
+              <motion.circle
+                cx="22" cy="68" r="7"
+                stroke="white" strokeWidth="2" fill="none" opacity="0.35"
+                animate={{ pathLength: [0, 1, 1, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.0 }}
+              />
+              <motion.circle
+                cx="22" cy="68" r="3.5"
+                stroke="white" strokeWidth="1.5" fill="none" opacity="0.4"
+                animate={{ pathLength: [0, 1, 1, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+              />
+            </motion.svg>
+            {/* Hover glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/0 to-white/[0.06] opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500" />
+            <span className="relative text-5xl sm:text-6xl font-bold leading-none mb-2 bg-gradient-to-r from-white to-[#5ce1e6] bg-clip-text text-transparent">
+              {dentalHeroContent.stats[0].value}
             </span>
-            <span className="text-white/70 text-sm sm:text-base font-medium leading-snug">
-              Years of
-              <br />
-              Service Experience
+            <span className="relative text-white/70 text-sm sm:text-base font-medium leading-snug whitespace-pre-line transition-colors duration-500 group-hover/stat:text-white/90">
+              {dentalHeroContent.stats[0].label}
             </span>
           </div>
 
           {/* Top-center + bottom-center: Large photo spanning 2 rows */}
           <div className="col-span-1 lg:col-span-2 row-span-2 rounded-2xl overflow-hidden relative min-h-[280px] sm:min-h-[360px]">
             <Image
-              src="/assets/images/clinic/img2.jpg"
+              src="/assets/images/clinic/05.jpg"
               alt="Patient smiling during dental checkup"
               fill
-              className="object-cover"
+              className="oneImg object-cover"
               sizes="(max-width: 1024px) 50vw, 50%"
             />
           </div>
@@ -430,10 +489,10 @@ export default function DentalHero() {
           {/* Top-right: Photo */}
           <div className="rounded-2xl overflow-hidden relative aspect-square lg:aspect-auto">
             <Image
-              src="/assets/images/clinic/img3.jpg"
+              src="/assets/images/clinic/06.jpg"
               alt="Modern dental equipment and procedure"
               fill
-              className="object-cover"
+              className="twoImg object-cover"
               sizes="(max-width: 1024px) 50vw, 25%"
             />
           </div>
@@ -444,18 +503,48 @@ export default function DentalHero() {
               src="/assets/images/clinic/img4.jpg"
               alt="Happy patient with beautiful smile"
               fill
-              className="object-cover"
+              className="threeImg object-cover"
               sizes="(max-width: 1024px) 50vw, 25%"
             />
           </div>
 
           {/* Bottom-right: Stat card "5k+" */}
-          <div className="rounded-2xl bg-gradient-to-br from-[#5ce1e6] to-[#3abcc2] p-6 sm:p-8 flex flex-col justify-end aspect-square lg:aspect-auto">
-            <span className="text-secondary text-5xl sm:text-6xl font-bold leading-none mb-2">
-              5k+
+          <div className="lastContainer group/stat2 relative rounded-2xl bg-gradient-to-br from-[#5ce1e6] to-[#3abcc2] p-6 sm:p-8 flex flex-col justify-end aspect-square lg:aspect-auto overflow-hidden transition-all duration-500 hover:shadow-[0_8px_32px_rgba(92,225,230,0.3)] hover:scale-[1.03]">
+            {/* Heart + ECG pulse — continuous draw */}
+            <motion.svg
+              className="absolute top-2 right-2 w-24 h-24 sm:w-28 sm:h-28 transition-transform duration-500 group-hover/stat2:scale-110 group-hover/stat2:rotate-3"
+              viewBox="0 0 80 80"
+              fill="none"
+            >
+              {/* Heart outline */}
+              <motion.path
+                d="M40 62C32 56,12 42,12 28C12 20,18 14,26 14C31 14,35 17,40 22C45 17,49 14,54 14C62 14,68 20,68 28C68 42,48 56,40 62Z"
+                stroke="#152d3e" strokeWidth="2" fill="none" opacity="0.3"
+                animate={{ pathLength: [0, 1, 1, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              {/* ECG line inside heart */}
+              <motion.path
+                d="M18 36L28 36L33 24L40 52L47 30L52 40L62 40"
+                stroke="#152d3e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"
+                animate={{ pathLength: [0, 1, 1, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              />
+              {/* Small pulse dot that travels */}
+              <motion.circle
+                cx="40" cy="36" r="2.5"
+                fill="#152d3e" opacity="0.3"
+                animate={{ cx: [18, 62, 18], cy: [36, 40, 36] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              />
+            </motion.svg>
+            {/* Hover glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/0 to-white/[0.12] opacity-0 group-hover/stat2:opacity-100 transition-opacity duration-500" />
+            <span className="relative text-5xl sm:text-6xl font-bold leading-none mb-2 bg-gradient-to-r from-secondary to-primary-dark bg-clip-text text-transparent">
+              {dentalHeroContent.stats[1].value}
             </span>
-            <span className="text-secondary/70 text-sm sm:text-base font-medium leading-snug">
-              Smiling
+            <span className="relative text-secondary/70 text-sm sm:text-base font-medium leading-snug whitespace-pre-line transition-colors duration-500 group-hover/stat2:text-secondary/90">
+              {dentalHeroContent.stats[1].label}
             </span>
           </div>
         </motion.div>
