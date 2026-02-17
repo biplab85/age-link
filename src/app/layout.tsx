@@ -1,0 +1,55 @@
+import type { Metadata } from "next";
+import { Playfair_Display, Inter } from "next/font/google";
+import "./globals.css";
+
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import StickyMobileCTA from "@/components/layout/StickyMobileCTA";
+import SkipLinks from "@/components/shared/SkipLinks";
+import CursorFollower from "@/components/shared/CursorFollower";
+import { siteConfig, pageMeta } from "@/data/content";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: pageMeta.home.title,
+  description: pageMeta.home.description,
+  openGraph: {
+    title: pageMeta.home.title,
+    description: pageMeta.home.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    type: "website",
+    images: [{ url: siteConfig.ogImage }],
+  },
+  metadataBase: new URL(siteConfig.url),
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <body className="font-body antialiased">
+        <SkipLinks />
+        <CursorFollower />
+        <Header />
+        <main id="main-content">{children}</main>
+        <Footer />
+        <StickyMobileCTA />
+      </body>
+    </html>
+  );
+}
