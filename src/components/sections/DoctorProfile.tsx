@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -83,15 +84,16 @@ export default function DoctorProfile() {
               {/* Soft glow behind */}
               <div className="absolute -inset-6 rounded-3xl bg-primary/[0.06] blur-2xl" aria-hidden="true" />
 
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-gradient-to-br from-primary-light to-primary/[0.12] shadow-[var(--shadow-elevated)] border border-primary/[0.08]">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-primary/20">
-                    <svg className="w-20 h-20 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                    </svg>
-                    <p className="text-sm font-medium">Doctor Photo</p>
-                  </div>
-                </div>
+              <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-primary-light to-primary/[0.12] shadow-[var(--shadow-elevated)] border border-primary/[0.08]">
+                <Image
+                  src="/assets/images/Sitoh-YY.avif"
+                  alt={doc.name}
+                  width={600}
+                  height={600}
+                  className="w-full h-auto block"
+                  sizes="(max-width: 1024px) 384px, 50vw"
+                  priority
+                />
               </div>
 
               {/* Credential card */}

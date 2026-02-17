@@ -215,7 +215,7 @@ export default function ValueProps() {
               <div className="absolute top-0 inset-x-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/50 transition-all duration-600" />
 
               {/* Icon — lifts + icon bg fills with soft primary */}
-              <div className="w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] flex items-center justify-center text-primary transition-all duration-500 ease-[var(--ease-smooth)] group-hover:from-primary group-hover:to-primary-dark group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(0,128,159,0.25)] group-hover:-translate-y-1">
+              <div className="icon-draw w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] flex items-center justify-center text-primary transition-all duration-500 ease-[var(--ease-smooth)] group-hover:from-primary group-hover:to-primary-dark group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(0,128,159,0.25)] group-hover:-translate-y-1">
                 {icons[i]}
               </div>
 

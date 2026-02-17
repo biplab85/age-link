@@ -1,10 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+import { useState, useCallback, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -90,68 +87,324 @@ function SectionBg() {
   );
 }
 
-function ServiceCard({ service, icon }: { service: typeof homepageServices[number]; icon: React.ReactNode }) {
+/* ─── Animated medical SVG for left sidebar empty space ─── */
+function SidebarMedicalSvg() {
   return (
-    <div className="group h-full relative p-6 lg:p-7 rounded-2xl bg-white border border-neutral-200/50 shadow-[var(--shadow-card)] transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.10),0_2px_6px_rgba(0,0,0,0.03)] hover:-translate-y-1 overflow-hidden">
-      {/* Subtle gradient overlay — washes in from bottom */}
-      <div className="absolute inset-0 bg-gradient-to-t from-primary/[0.00] to-transparent group-hover:from-primary/[0.03] transition-all duration-600 pointer-events-none" />
-
-      {/* Bottom gradient line — sweeps in from left */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-primary-dark to-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-600 ease-[var(--ease-smooth)] origin-left" />
-
-      {/* Icon */}
-      <div className="relative w-12 h-12 mb-5 rounded-xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] flex items-center justify-center text-primary transition-all duration-500 group-hover:text-primary-dark group-hover:from-primary/[0.14] group-hover:to-primary/[0.06]">
-        {icon}
-      </div>
-      <h3 className="relative font-heading text-lg font-semibold text-secondary mb-2.5 transition-colors duration-400 group-hover:text-primary">
-        {service.title}
-      </h3>
-      <p className="relative text-sm text-neutral-500 leading-relaxed mb-4">
-        {service.shortDescription}
-      </p>
-      <span className="relative inline-flex items-center gap-1.5 text-sm font-medium text-primary/40 group-hover:text-primary transition-all duration-400">
-        Learn more
-        <svg className="w-3.5 h-3.5 -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-400 ease-[var(--ease-smooth)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </span>
+    <div className="hidden lg:flex flex-1 items-end justify-center px-5 pb-6 pt-4 opacity-[0.12]" aria-hidden="true">
+      <svg viewBox="0 0 200 180" fill="none" className="w-full max-w-[200px]">
+        {/* Continuous ECG heartbeat wave */}
+        <motion.path
+          d="M10 90 L40 90 L50 90 L58 55 L70 125 L82 65 L90 105 L98 90 L130 90"
+          stroke="var(--color-primary)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: [0, 1, 1, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", times: [0, 0.4, 0.6, 1] }}
+        />
+        {/* Stethoscope tubing */}
+        <motion.path
+          d="M60 130 Q60 145, 75 148 Q90 150, 100 140 Q110 130, 110 115"
+          stroke="var(--color-primary)"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          fill="none"
+          animate={{ pathLength: [0, 1] }}
+          transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 0.5 }}
+        />
+        {/* Stethoscope chest piece */}
+        <motion.circle
+          cx="110" cy="108" r="10"
+          stroke="var(--color-primary)"
+          strokeWidth="1.5"
+          fill="none"
+          animate={{ scale: [1, 1.08, 1] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <circle cx="110" cy="108" r="3.5" fill="var(--color-primary)" opacity="0.3" />
+        {/* Medical cross */}
+        <motion.g
+          animate={{ opacity: [0.4, 0.8, 0.4], y: [-1, 1, -1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        >
+          <rect x="155" y="38" width="8" height="20" rx="2.5" fill="var(--color-primary)" />
+          <rect x="149" y="44" width="20" height="8" rx="2.5" fill="var(--color-primary)" />
+        </motion.g>
+        {/* Pulse ring — large */}
+        <motion.circle
+          cx="159" cy="48" r="22"
+          stroke="var(--color-primary)"
+          strokeWidth="0.8"
+          fill="none"
+          animate={{ r: [22, 30, 22], opacity: [0.3, 0.08, 0.3] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Small decorative dots */}
+        <motion.circle cx="28" cy="75" r="2" fill="var(--color-primary)"
+          animate={{ opacity: [0.3, 0.7, 0.3] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.circle cx="145" cy="130" r="2" fill="var(--color-primary)"
+          animate={{ opacity: [0.2, 0.6, 0.2] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+        />
+        {/* Abstract DNA helix segment */}
+        <motion.path
+          d="M20 140 Q30 135, 20 130 Q10 125, 20 120"
+          stroke="var(--color-primary)"
+          strokeWidth="1.2"
+          fill="none"
+          strokeLinecap="round"
+          animate={{ pathLength: [0, 1] }}
+          transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1.5 }}
+        />
+        <motion.path
+          d="M30 140 Q20 135, 30 130 Q40 125, 30 120"
+          stroke="var(--color-primary)"
+          strokeWidth="1.2"
+          fill="none"
+          strokeLinecap="round"
+          animate={{ pathLength: [0, 1] }}
+          transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1.8 }}
+        />
+      </svg>
     </div>
   );
 }
 
+/* ─── Tab content panel ─── */
+function TabPanel({ service }: { service: (typeof homepageServices)[number] }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+    >
+      {/* Description */}
+      <p className="text-neutral-600 leading-relaxed text-[15px] mb-8">
+        {service.fullDescription}
+      </p>
+
+      {/* Detail cards grid */}
+      <div className="grid sm:grid-cols-3 gap-4">
+        {/* Who is it for */}
+        <div className="group/card relative rounded-xl p-5 bg-gradient-to-br from-primary/[0.04] to-primary/[0.01] border border-primary/[0.08] overflow-hidden transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_28px_rgba(0,128,159,0.10),0_2px_6px_rgba(0,0,0,0.03)] hover:-translate-y-1 hover:border-primary/20">
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary to-primary/40 transition-all duration-500 group-hover/card:h-[3px] group-hover/card:from-primary/60 group-hover/card:via-primary group-hover/card:to-primary/60" />
+          <div className="flex items-center gap-2 mb-3.5">
+            <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center transition-all duration-500 group-hover/card:bg-primary group-hover/card:shadow-[0_4px_12px_rgba(0,128,159,0.25)]">
+              <svg className="w-3.5 h-3.5 text-primary transition-colors duration-500 group-hover/card:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0" />
+              </svg>
+            </div>
+            <h4 className="text-xs font-bold text-secondary uppercase tracking-wider transition-colors duration-500 group-hover/card:text-primary">
+              Who is it for
+            </h4>
+          </div>
+          <ul className="space-y-2.5">
+            {service.whoIsItFor.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-[13px] text-neutral-500 leading-snug">
+                <svg className="w-3.5 h-3.5 mt-0.5 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* What it includes */}
+        <div className="group/card relative rounded-xl p-5 bg-gradient-to-br from-primary/[0.04] to-primary/[0.01] border border-primary/[0.08] overflow-hidden transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_28px_rgba(0,128,159,0.10),0_2px_6px_rgba(0,0,0,0.03)] hover:-translate-y-1 hover:border-primary/20">
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/40 via-primary-dark to-primary/40 transition-all duration-500 group-hover/card:h-[3px] group-hover/card:from-primary/60 group-hover/card:via-primary-dark group-hover/card:to-primary/60" />
+          <div className="flex items-center gap-2 mb-3.5">
+            <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center transition-all duration-500 group-hover/card:bg-primary-dark group-hover/card:shadow-[0_4px_12px_rgba(0,102,127,0.25)]">
+              <svg className="w-3.5 h-3.5 text-primary transition-colors duration-500 group-hover/card:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </div>
+            <h4 className="text-xs font-bold text-secondary uppercase tracking-wider transition-colors duration-500 group-hover/card:text-primary-dark">
+              What it includes
+            </h4>
+          </div>
+          <ul className="space-y-2.5">
+            {service.whatItIncludes.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-[13px] text-neutral-500 leading-snug">
+                <svg className="w-3.5 h-3.5 mt-0.5 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Expected outcomes */}
+        <div className="group/card relative rounded-xl p-5 bg-gradient-to-br from-accent/[0.04] to-accent/[0.01] border border-accent/[0.12] overflow-hidden transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_28px_rgba(232,168,56,0.12),0_2px_6px_rgba(0,0,0,0.03)] hover:-translate-y-1 hover:border-accent/25">
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent/40 via-accent to-accent/40 transition-all duration-500 group-hover/card:h-[3px] group-hover/card:from-accent/60 group-hover/card:via-accent group-hover/card:to-accent/60" />
+          <div className="flex items-center gap-2 mb-3.5">
+            <div className="w-7 h-7 rounded-lg bg-accent/10 flex items-center justify-center transition-all duration-500 group-hover/card:bg-accent group-hover/card:shadow-[0_4px_12px_rgba(232,168,56,0.25)]">
+              <svg className="w-3.5 h-3.5 text-accent transition-colors duration-500 group-hover/card:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+              </svg>
+            </div>
+            <h4 className="text-xs font-bold text-secondary uppercase tracking-wider transition-colors duration-500 group-hover/card:text-accent">
+              Expected outcomes
+            </h4>
+          </div>
+          <ul className="space-y-2.5">
+            {service.expectedOutcomes.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-[13px] text-neutral-500 leading-snug">
+                <svg className="w-3.5 h-3.5 mt-0.5 text-accent flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function ServicesOverview() {
+  const [activeTab, setActiveTab] = useState(0);
+  const autoPlayRef = useRef<ReturnType<typeof setInterval>>(null);
+  const pausedUntilRef = useRef(0);
+  const hoveringRef = useRef(false);
+  const activeTabRef = useRef(0);
+
+  const handleTabClick = useCallback(
+    (index: number) => {
+      if (index === activeTabRef.current) return;
+      pausedUntilRef.current = Date.now() + 10000;
+      activeTabRef.current = index;
+      setActiveTab(index);
+    },
+    []
+  );
+
+  // Auto tab rotation
+  useEffect(() => {
+    autoPlayRef.current = setInterval(() => {
+      if (hoveringRef.current || Date.now() < pausedUntilRef.current) return;
+      const next = (activeTabRef.current + 1) % homepageServices.length;
+      activeTabRef.current = next;
+      setActiveTab(next);
+    }, 6000);
+
+    return () => {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    };
+  }, []);
+
   return (
     <section id="services" className="relative py-20 lg:py-28 overflow-hidden">
       <SectionBg />
       <Container className="relative z-[1]">
         <SectionHeading title={servicesHeading} subtitle={servicesSubheading} tag="What We Offer" />
 
-        {/* Desktop grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-          {homepageServices.map((service, i) => (
-            <ScrollReveal key={service.slug} delay={i * 0.06}>
-              <ServiceCard service={service} icon={serviceIcons[i]} />
-            </ScrollReveal>
-          ))}
-        </div>
-
-        {/* Mobile swiper */}
-        <div className="md:hidden">
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            spaceBetween={14}
-            slidesPerView={1.12}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 5000, disableOnInteraction: true }}
-            className="!pb-12"
+        <ScrollReveal>
+          <div
+            className="rounded-2xl bg-white border border-neutral-200/50 shadow-[var(--shadow-card)] overflow-hidden"
+            onMouseEnter={() => { hoveringRef.current = true; }}
+            onMouseLeave={() => { hoveringRef.current = false; }}
           >
-            {homepageServices.map((service, i) => (
-              <SwiperSlide key={service.slug}>
-                <ServiceCard service={service} icon={serviceIcons[i]} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+            <div className="flex flex-col lg:flex-row">
+              {/* ── Left: Vertical tab buttons (desktop) / Horizontal (mobile) ── */}
+              <div className="lg:w-[280px] xl:w-[300px] flex-shrink-0 border-b lg:border-b-0 lg:border-r border-neutral-200/60 lg:flex lg:flex-col lg:bg-gradient-to-b lg:from-transparent lg:to-primary/[0.02]">
+                <div className="flex lg:flex-col overflow-x-auto lg:overflow-x-visible scrollbar-hide">
+                  {homepageServices.map((service, i) => {
+                    const isActive = activeTab === i;
+                    return (
+                      <button
+                        key={service.slug}
+                        onClick={() => handleTabClick(i)}
+                        className={`
+                          relative flex items-center gap-3 px-5 py-4 lg:py-4.5 text-sm font-medium whitespace-nowrap lg:whitespace-normal text-left
+                          transition-all duration-400 ease-[var(--ease-smooth)] min-w-0
+                          ${isActive
+                            ? "text-primary bg-primary/[0.05]"
+                            : "text-neutral-400 hover:text-neutral-600 hover:bg-neutral-50/60"
+                          }
+                        `}
+                        aria-selected={isActive}
+                        role="tab"
+                      >
+                        <span className={`
+                          icon-draw flex-shrink-0 transition-colors duration-400
+                          ${isActive ? "text-primary" : "text-neutral-300"}
+                        `}>
+                          {serviceIcons[i]}
+                        </span>
+                        <span className="hidden sm:inline truncate lg:whitespace-normal">{service.title}</span>
+
+                        {/* Active indicator — bottom line on mobile, left bar on desktop */}
+                        {isActive && (
+                          <>
+                            <motion.div
+                              layoutId="service-tab-indicator-bottom"
+                              className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary via-primary-dark to-primary lg:hidden"
+                              transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                            />
+                            <motion.div
+                              layoutId="service-tab-indicator-left"
+                              className="hidden lg:block absolute top-0 bottom-0 left-0 w-[3px] rounded-r-full bg-gradient-to-b from-primary via-primary-dark to-primary"
+                              transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                            />
+                          </>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+                {/* Animated medical SVG in empty space below tabs */}
+                <SidebarMedicalSvg />
+              </div>
+
+              {/* ── Right: Content area ── */}
+              <div className="flex-1 p-6 lg:p-10 min-h-[320px] relative bg-gradient-to-br from-white via-white to-primary/[0.02]">
+                {/* Subtle corner glow */}
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/[0.03] rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+
+                <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeTab}
+                      className="relative"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                    >
+                      {/* Title row with icon badge */}
+                      <div className="flex items-start gap-4 mb-5">
+                        <div className="hidden sm:flex w-11 h-11 rounded-xl bg-gradient-to-br from-primary/10 to-primary/[0.04] items-center justify-center text-primary flex-shrink-0 shadow-[0_2px_8px_rgba(0,128,159,0.08)]">
+                          {serviceIcons[activeTab]}
+                        </div>
+                        <div>
+                          <h3 className="font-heading text-xl lg:text-2xl font-semibold text-secondary mb-1">
+                            {homepageServices[activeTab].title}
+                          </h3>
+                          <p className="text-primary/70 text-sm font-medium">
+                            {homepageServices[activeTab].shortDescription}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Separator */}
+                      <div className="flex items-center gap-2 mb-6">
+                        <span className="h-[1px] flex-1 bg-gradient-to-r from-primary/20 to-transparent" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/20" />
+                      </div>
+
+                      <TabPanel service={homepageServices[activeTab]} />
+                    </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
 
         <ScrollReveal className="text-center mt-12">
           <Button href={servicesViewAllHref} variant="secondary">

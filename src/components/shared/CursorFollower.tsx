@@ -84,10 +84,12 @@ export default function CursorFollower() {
     };
   }, [visible, hovering]);
 
-  if (!visible) return null;
-
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[9999]">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-[9999]"
+      style={{ opacity: visible ? 1 : 0 }}
+    >
       {/* Inner dot */}
       <div
         ref={dotRef}

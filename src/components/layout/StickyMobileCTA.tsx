@@ -12,10 +12,11 @@ export default function StickyMobileCTA() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!visible) return null;
-
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-neutral-200 px-4 py-3 flex gap-3">
+    <div
+      className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-neutral-200 px-4 py-3 flex gap-3 transition-transform duration-300"
+      style={{ transform: visible ? "translateY(0)" : "translateY(100%)" }}
+    >
       <a
         href={`tel:${contactInfo.emergencyPhone.replace(/\s/g, "")}`}
         className="flex-1 flex items-center justify-center gap-2 py-3 rounded-lg border-2 border-primary text-primary font-semibold text-sm transition-colors hover:bg-primary hover:text-white"

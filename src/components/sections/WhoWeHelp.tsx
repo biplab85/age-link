@@ -95,7 +95,7 @@ export default function WhoWeHelp() {
               <div className="absolute left-0 top-1/2 w-[3px] h-0 group-hover:h-16 group-hover:top-[calc(50%-32px)] rounded-full bg-gradient-to-b from-primary to-primary-dark transition-all duration-500 ease-[var(--ease-smooth)]" />
 
               {/* Icon — ring glow expands + soft background shift */}
-              <div className="relative w-14 h-14 mb-5 rounded-2xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] flex items-center justify-center text-primary transition-all duration-500 group-hover:from-primary/[0.14] group-hover:to-primary/[0.06] group-hover:shadow-[0_0_0_5px_rgba(0,128,159,0.06),0_0_20px_rgba(0,128,159,0.08)]">
+              <div className="icon-draw relative w-14 h-14 mb-5 rounded-2xl bg-gradient-to-br from-primary/[0.08] to-primary/[0.03] flex items-center justify-center text-primary transition-all duration-500 group-hover:from-primary/[0.14] group-hover:to-primary/[0.06] group-hover:shadow-[0_0_0_5px_rgba(0,128,159,0.06),0_0_20px_rgba(0,128,159,0.08)]">
                 {icons[i]}
               </div>
               <h3 className="relative font-heading text-xl font-semibold text-secondary mb-3 transition-colors duration-400 group-hover:text-secondary">{item.title}</h3>

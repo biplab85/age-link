@@ -176,10 +176,9 @@ export default function Footer() {
               {contactInfo.email}
             </a>
           </div>
-        </div>
-
-        <div className="mt-5 text-center">
-          <p className="text-white/20 text-xs">{siteConfig.copyright}</p>
+          <div className="text-end">
+            <p className="text-white/20 text-xs">{siteConfig.copyright}</p>
+          </div>
         </div>
       </Container>
     </footer>
