@@ -2,19 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { galleryHeading, gallerySubheading, galleryImages } from "@/data/content";
-
-const cardGradients = [
-  "from-[#e8f6fa] via-[#d6eef5] to-primary/[0.08]",
-  "from-[#fdf6ec] via-[#f8e8cc] to-accent/[0.08]",
-  "from-[#ece8f6] via-[#ddd6f0] to-[#8b6ec0]/[0.06]",
-  "from-[#e8f6f0] via-[#d0f0e4] to-[#10b981]/[0.06]",
-  "from-[#f6eee8] via-[#f0ddd0] to-[#d4856a]/[0.06]",
-  "from-[#e8f0f6] via-[#d6e4f0] to-[#4a80b0]/[0.06]",
-];
 
 function SectionBg() {
   return (
@@ -120,15 +112,13 @@ export default function ImageGallery() {
                 data-caption={img.caption}
                 className="group relative block rounded-2xl overflow-hidden aspect-[4/3] bg-neutral-100 cursor-pointer shadow-[var(--shadow-xs)] transition-all duration-500 ease-[var(--ease-smooth)] hover:shadow-[0_8px_32px_rgba(0,128,159,0.12),0_2px_8px_rgba(0,0,0,0.04)] hover:-translate-y-1"
               >
-                {/* Placeholder with unique gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${cardGradients[i % cardGradients.length]} flex items-center justify-center`}>
-                  <div className="text-center text-secondary/20">
-                    <svg className="w-8 h-8 mx-auto mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z" />
-                    </svg>
-                    <p className="text-xs">{img.caption}</p>
-                  </div>
-                </div>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 ease-[var(--ease-smooth)] group-hover:scale-105"
+                />
 
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/40 transition-colors duration-400 flex items-center justify-center">
@@ -146,6 +136,65 @@ export default function ImageGallery() {
               </a>
             </ScrollReveal>
           ))}
+
+          {/* 6th card — CTA with animated medical SVG */}
+          <ScrollReveal delay={galleryImages.length * 0.06}>
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-primary/[0.06] via-primary-lighter/60 to-white border border-primary/[0.1] shadow-[var(--shadow-xs)] flex flex-col items-center justify-center p-6 text-center">
+              {/* Animated medical equipment SVG */}
+              <svg viewBox="0 0 120 90" fill="none" className="w-24 h-auto mb-4">
+                {/* Stethoscope */}
+                <motion.path
+                  d="M30 20 Q30 10, 40 10 Q50 10, 50 20"
+                  stroke="var(--color-primary)" strokeWidth="2.5" strokeLinecap="round" fill="none"
+                  animate={{ pathLength: [0, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                />
+                <motion.path
+                  d="M30 20 L30 45 Q30 58, 40 58 Q50 58, 50 45 L50 20"
+                  stroke="var(--color-primary)" strokeWidth="2" strokeLinecap="round" fill="none"
+                  animate={{ pathLength: [0, 1] }}
+                  transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 0.3 }}
+                />
+                <motion.circle
+                  cx="40" cy="62" r="6" stroke="var(--color-primary)" strokeWidth="1.8" fill="none"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <circle cx="40" cy="62" r="2.5" fill="var(--color-primary)" opacity="0.25" />
+
+                {/* Heartbeat line */}
+                <motion.path
+                  d="M60 45 L70 45 L74 45 L78 30 L84 60 L90 38 L94 52 L98 45 L110 45"
+                  stroke="var(--color-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none"
+                  animate={{ pathLength: [0, 1, 1, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", times: [0, 0.4, 0.7, 1] }}
+                />
+
+                {/* Medical cross */}
+                <motion.g
+                  animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.08, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                >
+                  <rect x="80" y="10" width="5" height="16" rx="1.5" fill="var(--color-primary)" opacity="0.4" />
+                  <rect x="75" y="15" width="15" height="6" rx="1.5" fill="var(--color-primary)" opacity="0.4" />
+                </motion.g>
+
+                {/* Small pulse ring */}
+                <motion.circle
+                  cx="85" cy="18" r="12" stroke="var(--color-primary)" strokeWidth="0.8" fill="none"
+                  animate={{ r: [12, 18, 12], opacity: [0.15, 0, 0.15] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
+                />
+              </svg>
+
+              <p className="text-base font-bold leading-snug mb-1 bg-gradient-to-r from-primary via-primary-dark to-accent bg-clip-text text-transparent">
+                Caring for You
+              </p>
+              <p className="text-xs text-neutral-400 leading-relaxed">
+                Premium geriatric care in a warm, professional setting
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </Container>
     </section>

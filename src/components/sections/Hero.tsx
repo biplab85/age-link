@@ -333,7 +333,7 @@ export default function Hero() {
               <Button
                 href={heroContent.primaryCTA.href}
                 size="hero"
-                className="bg-gradient-to-r from-accent to-[#d4952e] text-white shadow-[0_2px_8px_rgba(232,168,56,0.3),0_6px_24px_rgba(232,168,56,0.15)] hover:shadow-[0_4px_12px_rgba(232,168,56,0.4),0_8px_32px_rgba(232,168,56,0.2)] hover:scale-[1.02] focus-visible:ring-accent/40"
+                className="bg-gradient-to-r from-primary to-primary-dark text-white shadow-[0_2px_8px_rgba(0,128,159,0.3),0_6px_24px_rgba(0,128,159,0.15)] hover:shadow-[0_4px_12px_rgba(0,128,159,0.4),0_8px_32px_rgba(0,128,159,0.2)] hover:scale-[1.02] focus-visible:ring-primary/40"
               >
                 {/* Calendar icon */}
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
