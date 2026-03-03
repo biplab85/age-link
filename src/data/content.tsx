@@ -224,7 +224,10 @@ export const heroContent: HeroContent = {
     href: "tel:+6565358833",
   },
   trustBadges: [
-    { label: "Mount Elizabeth Novena Hospital", icon: "/assets/icons/ui/hospital.svg" },
+    {
+      label: "Mount Elizabeth Novena Hospital",
+      icon: "/assets/icons/ui/hospital.svg",
+    },
     { label: "30+ Years Experience", icon: "/assets/icons/ui/experience.svg" },
     { label: "Specialist Accredited", icon: "/assets/icons/ui/accredited.svg" },
   ],
@@ -559,13 +562,34 @@ export const doctorProfile: DoctorProfile = {
     "Swallowing Disorders",
   ],
   credentials: [
-    { abbreviation: "MBBS", full: "Bachelor of Medicine & Surgery, National University of Singapore" },
-    { abbreviation: "MRCP (UK)", full: "Member, Royal College of Physicians, United Kingdom" },
-    { abbreviation: "FRCP (Edin)", full: "Fellow, Royal College of Physicians, Edinburgh" },
-    { abbreviation: "FRCPS (Glasg)", full: "Fellow, Royal College of Physicians & Surgeons, Glasgow" },
-    { abbreviation: "MMed", full: "Master of Sleep Medicine, University of Sydney" },
-    { abbreviation: "LLM", full: "Master of Laws in Medical Law & Ethics, University of Edinburgh" },
-    { abbreviation: "FAMS", full: "Fellow, Academy of Medicine Singapore (Geriatric Medicine)" },
+    {
+      abbreviation: "MBBS",
+      full: "Bachelor of Medicine & Surgery, National University of Singapore",
+    },
+    {
+      abbreviation: "MRCP (UK)",
+      full: "Member, Royal College of Physicians, United Kingdom",
+    },
+    {
+      abbreviation: "FRCP (Edin)",
+      full: "Fellow, Royal College of Physicians, Edinburgh",
+    },
+    {
+      abbreviation: "FRCPS (Glasg)",
+      full: "Fellow, Royal College of Physicians & Surgeons, Glasgow",
+    },
+    {
+      abbreviation: "MMed",
+      full: "Master of Sleep Medicine, University of Sydney",
+    },
+    {
+      abbreviation: "LLM",
+      full: "Master of Laws in Medical Law & Ethics, University of Edinburgh",
+    },
+    {
+      abbreviation: "FAMS",
+      full: "Fellow, Academy of Medicine Singapore (Geriatric Medicine)",
+    },
   ],
   memberships: [
     "Society for Geriatric Medicine, Singapore",
@@ -703,32 +727,32 @@ export const gallerySubheading =
 
 export const galleryImages: GalleryImage[] = [
   {
-    src: "/assets/images/clinic/img1.jpg",
-    thumbnail: "/assets/images/clinic/img1.jpg",
+    src: "/assets/images/clinic/6.jpg",
+    thumbnail: "/assets/images/clinic/6.jpg",
     alt: "Age-Link Specialist Clinic for geriatric medicine",
     caption: "Our Clinic",
   },
   {
-    src: "/assets/images/clinic/img2.jpg",
-    thumbnail: "/assets/images/clinic/img2.jpg",
+    src: "/assets/images/clinic/07.jpg",
+    thumbnail: "/assets/images/clinic/07.jpg",
     alt: "Consultation and patient care at Age-Link clinic",
     caption: "Patient Care",
   },
   {
-    src: "/assets/images/clinic/img3.jpg",
-    thumbnail: "/assets/images/clinic/img3.jpg",
+    src: "/assets/images/clinic/08.jpg",
+    thumbnail: "/assets/images/clinic/08.jpg",
     alt: "Medical facilities and services at Age-Link",
     caption: "Our Services",
   },
   {
-    src: "/assets/images/clinic/about-clinic.jpg",
-    thumbnail: "/assets/images/clinic/about-clinic.jpg",
+    src: "/assets/images/clinic/09.webp",
+    thumbnail: "/assets/images/clinic/09.webp",
     alt: "About Age-Link Specialist Clinic at Mount Elizabeth Novena",
     caption: "About Our Clinic",
   },
   {
-    src: "/assets/images/clinic/img4.jpg",
-    thumbnail: "/assets/images/clinic/img4.jpg",
+    src: "/assets/images/clinic/11.jpg",
+    thumbnail: "/assets/images/clinic/11.jpg",
     alt: "Age-Link clinic facility and environment",
     caption: "Clinic Environment",
   },
